@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#0B0B0C url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='156'%3E%3Cg fill='none' stroke='%23D9B45C' stroke-opacity='0.055' stroke-width='1'%3E%3Cpath d='M45 0L90 26L90 78L45 104L0 78L0 26Z'/%3E%3Cpath d='M0 78L45 104L45 156L0 182L-45 156L-45 104Z'/%3E%3Cpath d='M90 78L135 104L135 156L90 182L45 156L45 104Z'/%3E%3Cpath d='M0 -78L45 -52L45 0L0 26L-45 0L-45 -52Z'/%3E%3Cpath d='M90 -78L135 -52L135 0L90 26L45 0L45 -52Z'/%3E%3C/g%3E%3C/svg%3E");color:#F4F1E9;font-family:'Jost',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#D9B45C;text-decoration:none}
+a:hover{color:#F1DB9A}
+::selection{background:#C9A24B;color:#0B0B0C}
+input[type=range].ba{-webkit-appearance:none;appearance:none;width:100%;height:2px;background:linear-gradient(90deg,#8F6B22,#E8C97A);border-radius:2px;outline:none}
+input[type=range].ba::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#0B0B0C;border:2px solid #D9B45C;cursor:ew-resize;box-shadow:0 2px 8px rgba(0,0,0,.6)}
+</style>
+</helmet>
+
+<nav data-screen-label="Nav" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:76px;background:rgba(11,11,12,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,162,75,.18)">
+  <a href="index.html" style="display:flex;align-items:center;gap:14px">
+    <img src="uploads/velora-mark-v3.png" alt="VELORA" style="width:42px;height:42px;object-fit:contain">
+    <span style="display:flex;flex-direction:column;line-height:1"><span style="font-family:'Marcellus',serif;font-size:19px;letter-spacing:.32em;color:#F4F1E9">VELORA</span><span style="font-size:9px;letter-spacing:.3em;color:#A39F94;margin-top:5px">BUILDING SOLUTIONS</span></span>
+  </a>
+  <div style="display:flex;align-items:center;gap:36px;font-size:14px;letter-spacing:.08em">
+    <a href="services.html" style="color:#F4F1E9" style-hover="color:#E8C97A">SERVICES</a>
+    <a href="projects.html" style="color:#E8C97A;border-bottom:1px solid #D9B45C;padding-bottom:3px">PROJECTS</a>
+    <a href="index.html#about" style="color:#F4F1E9" style-hover="color:#E8C97A">WHY VELORA</a>
+    <a href="contact.html" style="color:#F4F1E9" style-hover="color:#E8C97A">CONTACT</a>
+    <a href="tel:+12503008029" style="color:#D9B45C;font-weight:500">250 300 8029</a>
+    <a href="quote.html" style="padding:11px 26px;background:linear-gradient(135deg,#B48630,#D9B45C 50%,#B48630);color:#0B0B0C;font-weight:600;font-size:13px;letter-spacing:.1em;border-radius:3px" style-hover="filter:brightness(1.12)">REQUEST A QUOTE</a>
+  </div>
+</nav>
+
+<header data-screen-label="Projects hero" style="padding:180px 96px 70px">
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px"><span style="width:44px;height:1px;background:#D9B45C"></span><span style="font-size:12px;letter-spacing:.34em;color:#D9B45C">PROJECTS</span></div>
+  <h1 style="font-family:'Marcellus',serif;font-size:clamp(40px,4.2vw,60px);font-weight:400;margin:0 0 22px;line-height:1.1">The work speaks.<br>We just take the photos.</h1>
+  <p style="font-size:17.5px;line-height:1.65;color:#A39F94;max-width:620px;margin:0;text-wrap:pretty">A growing record of exteriors, interiors and drywall projects across the Okanagan. Every one finished on schedule and walked through with the client before we called it done.</p>
+</header>
+
+<section data-screen-label="Before after" style="padding:20px 96px 90px">
+  <div style="max-width:1080px;margin:0 auto">
+    <div style="position:relative;height:560px;border-radius:8px;overflow:hidden;border:1px solid rgba(201,162,75,.25)">
+      <div style="position:absolute;inset:0"><image-slot id="pba-after" shape="rect" src="uploads/ai-entry-stucco.png" placeholder="Drop the AFTER photo"></image-slot></div>
+      <div style="position:absolute;top:0;bottom:0;left:0;width:{{ baWrapW }};overflow:hidden;pointer-events:none"><div style="position:absolute;top:0;bottom:0;left:0;width:{{ baInnerW }}"><image-slot id="pba-before" shape="rect" src="uploads/ai-entry-before.png" placeholder=""></image-slot></div></div>
+      <div style="position:absolute;top:0;bottom:0;left:{{ baWrapW }};width:2px;background:#E8C97A;pointer-events:none;box-shadow:0 0 12px rgba(232,201,122,.6)"></div>
+      <span style="position:absolute;top:18px;left:18px;padding:6px 14px;background:rgba(11,11,12,.75);border:1px solid rgba(201,162,75,.4);border-radius:3px;font-size:11px;letter-spacing:.24em;pointer-events:none">BEFORE</span>
+      <span style="position:absolute;top:18px;right:18px;padding:6px 14px;background:rgba(11,11,12,.75);border:1px solid rgba(201,162,75,.4);border-radius:3px;font-size:11px;letter-spacing:.24em;pointer-events:none">AFTER</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:18px;margin-top:20px">
+      <span style="font-size:11px;letter-spacing:.2em;color:#A39F94;flex:none">DRAG TO COMPARE</span>
+      <input class="ba" type="range" min="0" max="100" value="{{ baPos }}" onChange="{{ onBa }}" onInput="{{ onBa }}">
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Project grid" style="padding:0 96px 100px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px">
+    <sc-for list="{{ projects }}" as="pr" hint-placeholder-count="4">
+      <div style="background:#141416;border:1px solid rgba(201,162,75,.14);border-radius:8px;overflow:hidden;transition:border-color .25s" style-hover="border-color:rgba(217,180,92,.55)">
+        <div style="position:relative;height:340px;min-width:0"><div style="position:absolute;inset:0"><image-slot id="{{ pr.slotId }}" shape="rect" src="{{ pr.src }}" placeholder="{{ pr.ph }}"></image-slot></div></div>
+        <div style="padding:28px 30px">
+          <div style="font-size:11px;letter-spacing:.24em;color:#D9B45C;margin-bottom:10px">{{ pr.kind }}</div>
+          <div style="font-family:'Marcellus',serif;font-size:23px;margin-bottom:10px">{{ pr.title }}</div>
+          <p style="font-size:14.5px;line-height:1.65;color:#A39F94;margin:0 0 20px;text-wrap:pretty">{{ pr.desc }}</p>
+          <div style="display:flex;gap:28px;border-top:1px solid rgba(201,162,75,.14);padding-top:16px">
+            <div><div style="font-size:10.5px;letter-spacing:.2em;color:#6E6A61;margin-bottom:4px">SCOPE</div><div style="font-size:13.5px;color:#F4F1E9">{{ pr.scope }}</div></div>
+            <div><div style="font-size:10.5px;letter-spacing:.2em;color:#6E6A61;margin-bottom:4px">TIMELINE</div><div style="font-size:13.5px;color:#F4F1E9">{{ pr.time }}</div></div>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <p style="text-align:center;font-size:14.5px;color:#A39F94;margin:48px 0 0">More projects added as we photograph them. Want yours here? <a href="quote.html">Start with a quote</a>.</p>
+</section>
+
+<section data-screen-label="CTA" style="padding:90px 96px;text-align:center;background:linear-gradient(180deg,#0E0E10,#131109);border-top:1px solid rgba(201,162,75,.2)">
+  <h2 style="font-family:'Marcellus',serif;font-size:clamp(32px,3.2vw,44px);font-weight:400;margin:0 0 16px">Your place could be next.</h2>
+  <div style="display:flex;gap:18px;justify-content:center;margin-top:32px">
+    <a href="quote.html" style="padding:17px 40px;background:linear-gradient(135deg,#B48630,#D9B45C 50%,#B48630);color:#0B0B0C;font-weight:600;font-size:14px;letter-spacing:.12em;border-radius:3px" style-hover="filter:brightness(1.12)">REQUEST A QUOTE</a>
+    <a href="tel:+12503008029" style="padding:16px 36px;border:1px solid rgba(201,162,75,.5);color:#F4F1E9;font-size:14px;letter-spacing:.12em;border-radius:3px" style-hover="border-color:#D9B45C;color:#E8C97A">250 300 8029</a>
+  </div>
+</section>
+
+<footer data-screen-label="Footer" style="padding:56px 96px 36px;background:#080809;border-top:1px solid rgba(201,162,75,.18)">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px">
+    <div style="display:flex;align-items:center;gap:14px">
+      <img src="uploads/velora-mark-v3.png" alt="" style="width:36px;height:36px;object-fit:contain">
+      <span style="font-family:'Marcellus',serif;font-size:16px;letter-spacing:.3em">VELORA</span>
+    </div>
+    <div style="display:flex;gap:28px;font-size:13.5px"><a href="index.html" style="color:#A39F94" style-hover="color:#E8C97A">Home</a><a href="services.html" style="color:#A39F94" style-hover="color:#E8C97A">Services</a><a href="quote.html" style="color:#A39F94" style-hover="color:#E8C97A">Request a Quote</a><a href="contact.html" style="color:#A39F94" style-hover="color:#E8C97A">Contact</a></div>
+    <span style="font-size:12.5px;color:#6E6A61">© 2026 VELORA Building Solutions · Kelowna, BC</span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { baPos: 50 };
+  renderVals() {
+    const baPos = this.state.baPos;
+    return {
+      baPos,
+      baWrapW: baPos + "%",
+      baInnerW: baPos > 0 ? (10000 / baPos) + "%" : "100%",
+      onBa: (e) => this.setState({ baPos: +e.target.value }),
+      projects: [
+        { slotId: "pg-red", src: "uploads/ai-exterior-dusk.png", ph: "Drop project photo", kind: "EXTERIOR · KELOWNA", title: "Craftsman exterior repaint", desc: "Slate-blue body with natural cedar-shake gables and cream trim over a stone-clad base — coatings chosen for full-sun Okanagan exposure.", scope: "Full exterior", time: "5 days" },
+        { slotId: "pg-yellow", src: "uploads/ai-bedroom.png", ph: "Drop project photo", kind: "INTERIOR · WEST KELOWNA", title: "Primary suite repaint", desc: "Bedroom and ensuite — walls, tray ceiling and trim in a warm neutral scheme. Furniture protected, finished dust-free in three days.", scope: "Bedroom + ensuite", time: "3 days" },
+        { slotId: "pg-blue", src: "uploads/ai-kitchen.png", ph: "Drop project photo", kind: "INTERIOR · KELOWNA", title: "Kitchen & main floor refresh", desc: "Walls, ceilings and millwork through the kitchen and living areas — repainted around the family's schedule, kitchen back in service each evening.", scope: "Kitchen + living", time: "4 days" },
+        { slotId: "pg-green", src: "uploads/ai-foyer.png", ph: "Drop project photo", kind: "INTERIOR · LAKE COUNTRY", title: "Entry & millwork refinish", desc: "Two-storey foyer, stair millwork and doors — smooth Level 5 walls with crisp enamel trim throughout.", scope: "Foyer + trim", time: "2 days" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
