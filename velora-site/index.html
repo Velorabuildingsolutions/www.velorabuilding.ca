@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#0B0B0C url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='156'%3E%3Cg fill='none' stroke='%23D9B45C' stroke-opacity='0.055' stroke-width='1'%3E%3Cpath d='M45 0L90 26L90 78L45 104L0 78L0 26Z'/%3E%3Cpath d='M0 78L45 104L45 156L0 182L-45 156L-45 104Z'/%3E%3Cpath d='M90 78L135 104L135 156L90 182L45 156L45 104Z'/%3E%3Cpath d='M0 -78L45 -52L45 0L0 26L-45 0L-45 -52Z'/%3E%3Cpath d='M90 -78L135 -52L135 0L90 26L45 0L45 -52Z'/%3E%3C/g%3E%3C/svg%3E");color:#F4F1E9;font-family:'Jost',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#D9B45C;text-decoration:none}
+a:hover{color:#F1DB9A}
+::selection{background:#C9A24B;color:#0B0B0C}
+input[type=range].ba{-webkit-appearance:none;appearance:none;width:100%;height:2px;background:linear-gradient(90deg,#8F6B22,#E8C97A);border-radius:2px;outline:none}
+input[type=range].ba::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#0B0B0C;border:2px solid #D9B45C;cursor:ew-resize;box-shadow:0 2px 8px rgba(0,0,0,.6)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+</style>
+<style>
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #E8C97A;outline-offset:3px}
+.nav-burger{display:none}
+img{max-width:100%}
+@media(min-width:901px){.mob-menu{display:none!important}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto!important}}
+@media(max-width:1200px){.rg-3{grid-template-columns:1fr 1fr!important}.rg-4{grid-template-columns:1fr 1fr!important;row-gap:40px!important}}
+@media(max-width:900px){
+nav{padding:0 20px!important}
+.nav-links{display:none!important}
+.nav-burger{display:flex!important;align-items:center;justify-content:center}
+section,header,footer{padding-left:24px!important;padding-right:24px!important}
+.page-pad{padding:120px 24px 60px!important;gap:48px!important}
+.rg-2,.rg-3{grid-template-columns:1fr!important}
+.rg-2{gap:40px!important}
+.rg-2>*{order:0!important}
+h1{font-size:clamp(32px,8.5vw,46px)!important}
+h2{font-size:clamp(26px,7vw,36px)!important}
+.hero-grid{min-height:auto!important}
+.hero-txt{padding:56px 24px 40px!important}
+.hero-img{margin:0 24px 48px!important;height:380px!important}
+.about-img{height:340px!important}
+.ba-h{height:300px!important}
+}
+@media(max-width:600px){
+.rg-4,.fg-2{grid-template-columns:1fr!important}
+section,header,footer{padding-left:18px!important;padding-right:18px!important}
+.page-pad{padding:110px 18px 50px!important}
+.btn-row{flex-direction:column!important;align-items:stretch!important}
+.btn-row a{text-align:center}
+.stat-row{flex-wrap:wrap!important;gap:22px!important}
+.card-pad{padding:30px 20px 28px!important}
+input,select,textarea{min-height:48px}
+}
+</style>
+</helmet>
+
+<nav data-screen-label="Nav" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:76px;background:rgba(11,11,12,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,162,75,.18)">
+  <a href="#top" style="display:flex;align-items:center;gap:14px">
+    <img src="uploads/velora-mark-v3.png" alt="VELORA" style="width:42px;height:42px;object-fit:contain">
+    <span style="display:flex;flex-direction:column;line-height:1">
+      <span style="font-family:'Marcellus',serif;font-size:19px;letter-spacing:.32em;color:#F4F1E9">VELORA</span>
+      <span style="font-size:9px;letter-spacing:.3em;color:#A39F94;margin-top:5px">BUILDING SOLUTIONS</span>
+    </span>
+  </a>
+  <div class="nav-links" style="display:flex;align-items:center;gap:36px;font-size:14px;letter-spacing:.08em">
+    <a href="services.html" style="color:#F4F1E9" style-hover="color:#E8C97A">SERVICES</a>
+    <a href="projects.html" style="color:#F4F1E9" style-hover="color:#E8C97A">PROJECTS</a>
+    <a href="#about" style="color:#F4F1E9" style-hover="color:#E8C97A">WHY VELORA</a>
+    <a href="contact.html" style="color:#F4F1E9" style-hover="color:#E8C97A">CONTACT</a>
+    <sc-if value="{{ phoneInNav }}" hint-placeholder-val="{{ true }}">
+      <a href="tel:+12503008029" style="display:flex;align-items:center;gap:8px;color:#D9B45C;font-weight:500">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D9B45C" stroke-width="2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 1.9z"></path></svg>
+        250 300 8029</a>
+    </sc-if>
+    <a href="#quote" style="padding:11px 26px;background:linear-gradient(135deg,#B48630,#D9B45C 50%,#B48630);color:#0B0B0C;font-weight:600;font-size:13px;letter-spacing:.1em;border-radius:3px" style-hover="filter:brightness(1.12)">REQUEST A QUOTE</a>
+  </div>
+  <button class="nav-burger" onClick="{{ toggleMenu }}" aria-label="Menu" aria-expanded="{{ menuOpenStr }}" style="display:none;background:none;border:1px solid rgba(201,162,75,.45);border-radius:6px;min-width:44px;height:44px;cursor:pointer;color:#E8C97A;font-size:20px;font-family:'Jost',sans-serif">{{ burgerIcon }}</button>
+</nav>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div class="mob-menu" style="position:fixed;top:76px;left:0;right:0;bottom:0;z-index:49;background:rgba(11,11,12,.97);backdrop-filter:blur(10px);display:flex;flex-direction:column;padding:24px;overflow:auto">
+    <a href="services.html" onClick="{{ closeMenu }}" style="padding:16px 8px;font-size:17px;letter-spacing:.12em;color:#F4F1E9;border-bottom:1px solid rgba(201,162,75,.15)">SERVICES</a>
+    <a href="projects.html" onClick="{{ closeMenu }}" style="padding:16px 8px;font-size:17px;letter-spacing:.12em;color:#F4F1E9;border-bottom:1px solid rgba(201,162,75,.15)">PROJECTS</a>
+    <a href="#about" onClick="{{ closeMenu }}" style="padding:16px 8px;font-size:17px;letter-spacing:.12em;color:#F4F1E9;border-bottom:1px solid rgba(201,162,75,.15)">WHY VELORA</a>
+    <a href="contact.html" onClick="{{ closeMenu }}" style="padding:16px 8px;font-size:17px;letter-spacing:.12em;color:#F4F1E9;border-bottom:1px solid rgba(201,162,75,.15)">CONTACT</a>
+    <a href="tel:+12503008029" onClick="{{ closeMenu }}" style="padding:16px 8px;font-size:17px;letter-spacing:.12em;color:#D9B45C;border-bottom:1px solid rgba(201,162,75,.15)">CALL 250 300 8029</a>
+    <a href="#quote" onClick="{{ closeMenu }}" style="margin-top:24px;padding:16px;background:linear-gradient(135deg,#B48630,#D9B45C 50%,#B48630);color:#0B0B0C;text-align:center;font-weight:600;font-size:14px;letter-spacing:.12em;border-radius:4px">REQUEST A QUOTE</a>
+  </div>
+</sc-if>
+
+<header id="top" data-screen-label="Hero" class="rg-2 hero-grid" style="display:grid;grid-template-columns:1.05fr .95fr;gap:0;min-height:92vh;padding-top:76px">
+  <div class="hero-txt" style="display:flex;flex-direction:column;justify-content:center;padding:80px 64px 80px 96px;animation:fadeUp .7s ease both">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:28px">
+      <span style="width:44px;height:1px;background:#D9B45C"></span>
+      <span style="font-size:12px;letter-spacing:.34em;color:#D9B45C">KELOWNA · OKANAGAN VALLEY</span>
+    </div>
+    <h1 style="font-family:'Marcellus',serif;font-size:clamp(44px,4.6vw,68px);line-height:1.08;margin:0 0 26px;font-weight:400">Finish work that<br>speaks for itself.</h1>
+    <p style="font-size:18px;line-height:1.65;color:#A39F94;max-width:520px;margin:0 0 40px;text-wrap:pretty">VELORA delivers premium painting, drywall and finishing for homes and businesses across the Okanagan — with the communication, care and craftsmanship your property deserves.</p>
+    <div class="btn-row" style="display:flex;gap:18px;align-items:center;margin-bottom:56px">
+      <a href="#quote" style="padding:17px 38px;background:linear-gradient(135deg,#B48630,#D9B45C 50%,#B48630);color:#0B0B0C;font-weight:600;font-size:14px;letter-spacing:.12em;border-radius:3px" style-hover="filter:brightness(1.12)">GET A FREE QUOTE</a>
+      <a href="tel:+12503008029" style="padding:16px 34px;border:1px solid rgba(201,162,75,.5);color:#F4F1E9;font-size:14px;letter-spacing:.12em;border-radius:3px" style-hover="border-color:#D9B45C;color:#E8C97A">CALL 250 300 8029</a>
+    </div>
+    <div class="stat-row" style="display:flex;gap:40px;border-top:1px solid rgba(201,162,75,.18);padding-top:28px">
+      <div><div style="font-family:'Marcellus',serif;font-size:24px;color:#E8C97A">Insured</div><div style="font-size:12.5px;letter-spacing:.08em;color:#A39F94;margin-top:4px">Fully covered work</div></div>
+      <div><div style="font-family:'Marcellus',serif;font-size:24px;color:#E8C97A">On time</div><div style="font-size:12.5px;letter-spacing:.08em;color:#A39F94;margin-top:4px">Clear schedules, kept</div></div>
+      <div><div style="font-family:'Marcellus',serif;font-size:24px;color:#E8C97A">Guaranteed</div><div style="font-size:12.5px;letter-spacing:.08em;color:#A39F94;margin-top:4px">Workmanship warranty</div></div>
+    </div>
+  </div>
+  <div class="hero-img" style="position:relative;margin:40px 56px 56px 0;height:640px;min-width:0">
+    <div style="position:absolute;inset:0;border:1px solid rgba(201,162,75,.35);transform:translate(16px,16px);border-radius:6px;pointer-events:none"></div>
+    <div style="position:absolute;inset:0"><image-slot id="hero-photo" shape="rounded" radius="6" src="uploads/ai-exterior-dusk.png" placeholder="Drop your best finished-project photo (tall crop)"></image-slot></div>
+  </div>
+</header>
+
+<section id="services" data-screen-label="Services" style="padding:110px 96px;background:#0E0E10;border-top:1px solid rgba(201,162,75,.14)">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px">
+    <div>
+      <div style="font-size:12px;letter-spacing:.34em;color:#D9B45C;margin-bottom:16px">WHAT WE DO</div>
+      <h2 style="font-family:'Marcellus',serif;font-size:42px;font-weight:400;margin:0">Services</h2>
+    </div>
+    <a href="services.html" style="font-size:14px;letter-spacing:.1em;border-bottom:1px solid rgba(201,162,75,.5);padding-bottom:4px">See all services in detail →</a>
+  </div>
+  <div class="rg-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
+    <sc-for list="{{ services }}" as="svc" hint-placeholder-count="6">
+      <div style="background:#141416;border:1px solid rgba(201,162,75,.14);border-radius:8px;padding:36px 32px;display:flex;flex-direction:column;gap:16px;transition:border-color .25s,transform .25s" style-hover="border-color:rgba(217,180,92,.55);transform:translateY(-4px)">
+        <div style="position:relative;width:34px;height:38px">
+          <svg width="34" height="38" viewBox="0 0 40 44" aria-hidden="true"><polygon points="20,2 38,12 38,32 20,42 2,32 2,12" fill="none" stroke="#D9B45C" stroke-width="1.4"></polygon></svg>
+          <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Marcellus',serif;font-size:13px;color:#D9B45C">{{ svc.num }}</span>
+        </div>
+        <h3 style="font-family:'Marcellus',serif;font-size:23px;font-weight:400;margin:0">{{ svc.title }}</h3>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:#A39F94;text-wrap:pretty">{{ svc.desc }}</p>
+        <div style="font-size:13px;letter-spacing:.06em;color:#D9B45C;margin-top:auto">{{ svc.tags }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <p style="margin:44px 0 0;text-align:center;font-size:14.5px;color:#A39F94">Growing into general contracting, renovations and project management — <a href="#quote">tell us about your project</a>.</p>
+</section>
+
+<section id="about" data-screen-label="Why Velora" class="rg-2" style="display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;padding:110px 96px;align-items:center">
+  <div class="about-img" style="position:relative;height:480px;min-width:0">
+    <div style="position:absolute;inset:0"><image-slot id="about-photo" shape="rounded" radius="6" src="uploads/ai-foyer.png" placeholder="Drop a photo of you at work — on-site, roller or trowel in hand"></image-slot></div>
+    <div style="position:absolute;bottom:-24px;right:-24px;background:linear-gradient(135deg,#B48630,#D9B45C 50%,#B48630);color:#0B0B0C;padding:22px 28px;border-radius:6px;pointer-events:none">
+      <div style="font-family:'Marcellus',serif;font-size:20px;line-height:1.2">Quality. Reliability.<br>Perfection.</div>
+    </div>
+  </div>
+  <div>
+    <div style="font-size:12px;letter-spacing:.34em;color:#D9B45C;margin-bottom:16px">WHY VELORA</div>
+    <h2 style="font-family:'Marcellus',serif;font-size:42px;font-weight:400;margin:0 0 24px;line-height:1.15">Built on craftsmanship,<br>run on communication.</h2>
+    <p style="font-size:16.5px;line-height:1.7;color:#A39F94;margin:0 0 40px;max-width:560px;text-wrap:pretty">VELORA was founded on a simple belief: the trades can feel premium. Straight answers, tidy job sites, honest timelines — and finishes you'll want to show off. Owner-operated in Kelowna, every project gets the owner's eyes on it.</p>
+    <div class="fg-2" style="display:grid;grid-template-columns:1fr 1fr;gap:26px 36px">
+      <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="4">
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <span style="width:8px;height:8px;background:#D9B45C;transform:rotate(45deg);margin-top:8px;flex:none"></span>
+          <div><div style="font-family:'Marcellus',serif;font-size:19px;margin-bottom:6px">{{ p.title }}</div><div style="font-size:14.5px;line-height:1.6;color:#A39F94">{{ p.desc }}</div></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Process" style="padding:100px 96px;background:#0E0E10;border-top:1px solid rgba(201,162,75,.14);border-bottom:1px solid rgba(201,162,75,.14)">
+  <div style="text-align:center;margin-bottom:64px">
+    <div style="font-size:12px;letter-spacing:.34em;color:#D9B45C;margin-bottom:16px">HOW IT WORKS</div>
+    <h2 style="font-family:'Marcellus',serif;font-size:42px;font-weight:400;margin:0">A simple, honest process</h2>
+  </div>
+  <div class="rg-4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0">
+    <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+      <div style="padding:0 32px;border-left:1px solid rgba(201,162,75,.2)">
+        <div style="font-family:'Marcellus',serif;font-size:15px;letter-spacing:.2em;color:#D9B45C;margin-bottom:18px">{{ st.num }}</div>
+        <div style="font-family:'Marcellus',serif;font-size:22px;margin-bottom:12px">{{ st.title }}</div>
+        <p style="margin:0;font-size:14.5px;line-height:1.65;color:#A39F94;text-wrap:pretty">{{ st.desc }}</p>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="projects" data-screen-label="Projects" style="padding:110px 96px">
+  <div style="text-align:center;margin-bottom:56px">
+    <div style="font-size:12px;letter-spacing:.34em;color:#D9B45C;margin-bottom:16px">RECENT WORK</div>
+    <h2 style="font-family:'Marcellus',serif;font-size:42px;font-weight:400;margin:0">See the difference</h2>
+  </div>
+  <div style="max-width:980px;margin:0 auto 28px">
+    <sc-if value="{{ baFillMode }}" hint-placeholder-val="{{ true }}">
+      <div class="rg-2" style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div class="ba-h" style="position:relative;height:440px;min-width:0"><div style="position:absolute;inset:0"><image-slot id="ba-before" shape="rounded" radius="8" src="uploads/ai-entry-before.png" placeholder="Drop the BEFORE photo"></image-slot></div><span style="position:absolute;top:14px;left:14px;padding:6px 14px;background:rgba(11,11,12,.75);border:1px solid rgba(201,162,75,.4);border-radius:3px;font-size:11px;letter-spacing:.24em;pointer-events:none">BEFORE</span></div>
+        <div class="ba-h" style="position:relative;height:440px;min-width:0"><div style="position:absolute;inset:0"><image-slot id="ba-after" shape="rounded" radius="8" src="uploads/ai-entry-stucco.png" placeholder="Drop the AFTER photo"></image-slot></div><span style="position:absolute;top:14px;right:14px;padding:6px 14px;background:rgba(11,11,12,.75);border:1px solid rgba(201,162,75,.4);border-radius:3px;font-size:11px;letter-spacing:.24em;pointer-events:none">AFTER</span></div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ baCompareMode }}" hint-placeholder-val="{{ false }}">
+      <div class="ba-h" style="position:relative;height:520px;border-radius:8px;overflow:hidden;border:1px solid rgba(201,162,75,.25)">
+        <div style="position:absolute;inset:0"><image-slot id="ba-after" shape="rect" src="uploads/ai-entry-stucco.png" placeholder="Drop the AFTER photo"></image-slot></div>
+        <sc-if value="{{ baBeforeFilled }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:0;bottom:0;left:0;width:{{ baWrapW }};overflow:hidden;pointer-events:none"><div style="position:absolute;top:0;bottom:0;left:0;width:{{ baInnerW }}"><image-slot id="ba-before" shape="rect" src="uploads/ai-entry-before.png" placeholder=""></image-slot></div></div>
+        </sc-if>
+        <sc-if value="{{ baBeforeEmpty }}" hint-placeholder-val="{{ true }}">
+          <div style="position:absolute;left:0;right:0;bottom:0;padding:14px;text-align:center;background:rgba(11,11,12,.7);font-size:12.5px;letter-spacing:.1em;color:#A39F94;pointer-events:none">Drop your photos in the side-by-side view first — the slider activates once both are in.</div>
+        </sc-if>
+        <div style="position:absolute;top:0;bottom:0;left:{{ baWrapW }};width:2px;background:#E8C97A;pointer-events:none;box-shadow:0 0 12px rgba(232,201,122,.6)"></div>
+        <span style="position:absolute;top:18px;left:18px;padding:6px 14px;background:rgba(11,11,12,.75);border:1px solid rgba(201,162,75,.4);border-radius:3px;font-size:11px;letter-spacing:.24em;pointer-events:none">BEFORE</span>
+        <span style="position:absolute;top:18px;right:18px;padding:6px 14px;background:rgba(11,11,12,.75);border:1px solid rgba(201,162,75,.4);border-radius:3px;font-size:11px;letter-spacing:.24em;pointer-events:none">AFTER</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:18px;margin-top:20px">
+        <span style="font-size:11px;letter-spacing:.2em;color:#A39F94;flex:none">DRAG TO COMPARE</span>
+        <input class="ba" type="range" min="0" max="100" value="{{ baPos }}" onChange="{{ onBa }}" onInput="{{ onBa }}">
+      </div>
+    </sc-if>
+    <div style="display:flex;justify-content:center;margin-top:18px">
+      <button onClick="{{ toggleBaMode }}" style="background:none;border:1px solid rgba(201,162,75,.4);border-radius:100px;color:#D9B45C;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.14em;padding:9px 22px;cursor:pointer" style-hover="border-color:#D9B45C;color:#E8C97A">{{ baModeLabel }}</button>
+    </div>
+  </div>
+  <div class="rg-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px">
+    <sc-for list="{{ projects }}" as="pr" hint-placeholder-count="3">
+      <div style="background:#141416;border:1px solid rgba(201,162,75,.14);border-radius:8px;overflow:hidden;transition:border-color .25s" style-hover="border-color:rgba(217,180,92,.55)">
+        <div style="height:240px"><image-slot id="{{ pr.slotId }}" shape="rect" src="{{ pr.src }}" placeholder="{{ pr.placeholder }}"></image-slot></div>
+        <div style="padding:24px 26px">
+          <div style="font-size:11px;letter-spacing:.24em;color:#D9B45C;margin-bottom:10px">{{ pr.kind }}</div>
+          <div style="font-family:'Marcellus',serif;font-size:20px;margin-bottom:8px">{{ pr.title }}</div>
+          <div style="font-size:14px;line-height:1.6;color:#A39F94">{{ pr.desc }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Testimonials" style="padding:100px 96px;background:#0E0E10;border-top:1px solid rgba(201,162,75,.14)">
+  <div style="text-align:center;margin-bottom:56px">
+    <div style="font-size:12px;letter-spacing:.34em;color:#D9B45C;margin-bottom:16px">WHAT CLIENTS SAY</div>
+    <h2 style="font-family:'Marcellus',serif;font-size:42px;font-weight:400;margin:0">Trusted across the Okanagan</h2>
+  </div>
+  <div class="rg-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
+    <sc-for list="{{ reviews }}" as="rv" hint-placeholder-count="3">
+      <figure style="margin:0;background:#141416;border:1px solid rgba(201,162,75,.14);border-radius:8px;padding:34px 30px;display:flex;flex-direction:column;gap:18px">
+        <div style="color:#D9B45C;letter-spacing:4px;font-size:15px">★★★★★</div>
+        <blockquote style="margin:0;font-size:15.5px;line-height:1.7;color:#F4F1E9;text-wrap:pretty">“{{ rv.quote }}”</blockquote>
+        <figcaption style="margin-top:auto;display:flex;flex-direction:column;gap:2px"><span style="font-family:'Marcellus',serif;font-size:16px;color:#E8C97A">{{ rv.name }}</span><span style="font-size:13px;color:#A39F94">{{ rv.where }}</span></figcaption>
+      </figure>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Service areas + FAQ" class="rg-2" style="display:grid;grid-template-columns:1fr 1.2fr;gap:80px;padding:110px 96px">
+  <div>
+    <div style="font-size:12px;letter-spacing:.34em;color:#D9B45C;margin-bottom:16px">WHERE WE WORK</div>
+    <h2 style="font-family:'Marcellus',serif;font-size:38px;font-weight:400;margin:0 0 22px">Proudly serving the Okanagan</h2>
+    <p style="font-size:15.5px;line-height:1.7;color:#A39F94;margin:0 0 30px;text-wrap:pretty">Based in Kelowna, working throughout the Central Okanagan and beyond. Outside these areas? Ask — we travel for the right project.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <sc-for list="{{ areas }}" as="area" hint-placeholder-count="8">
+        <span style="padding:10px 20px;border:1px solid rgba(201,162,75,.35);border-radius:100px;font-size:14px;color:#F4F1E9">{{ area }}</span>
+      </sc-for>
+    </div>
+  </div>
+  <div>
+    <div style="font-size:12px;letter-spacing:.34em;color:#D9B45C;margin-bottom:16px">COMMON QUESTIONS</div>
+    <h2 style="font-family:'Marcellus',serif;font-size:38px;font-weight:400;margin:0 0 28px">FAQ</h2>
+    <div style="display:flex;flex-direction:column">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+        <div style="border-bottom:1px solid rgba(201,162,75,.18)">
+          <button onClick="{{ f.toggle }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;background:none;border:none;color:#F4F1E9;font-family:'Jost',sans-serif;font-size:16.5px;text-align:left;padding:22px 2px;cursor:pointer" style-hover="color:#E8C97A"><span>{{ f.q }}</span><span style="font-family:'Marcellus',serif;color:#D9B45C;font-size:20px;flex:none">{{ f.mark }}</span></button>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0;padding:0 40px 24px 2px;font-size:15px;line-height:1.7;color:#A39F94;text-wrap:pretty">{{ f.a }}</p>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="quote" data-screen-label="CTA" style="padding:110px 96px;background:linear-gradient(180deg,#0E0E10,#131109);border-top:1px solid rgba(201,162,75,.2);text-align:center">
+  <img src="uploads/velora-mark-v3.png" alt="" style="width:64px;height:64px;object-fit:contain;margin-bottom:26px">
+  <h2 style="font-family:'Marcellus',serif;font-size:clamp(36px,3.6vw,52px);font-weight:400;margin:0 0 18px">Let's talk about your project.</h2>
+  <p style="font-size:17px;color:#A39F94;max-width:560px;margin:0 auto 42px;line-height:1.65;text-wrap:pretty">Free, no-pressure quotes. Tell us what you're planning and we'll get back to you within one business day.</p>
+  <div class="btn-row" style="display:flex;gap:18px;justify-content:center">
+    <a href="quote.html" style="padding:18px 44px;background:linear-gradient(135deg,#B48630,#D9B45C 50%,#B48630);color:#0B0B0C;font-weight:600;font-size:14px;letter-spacing:.12em;border-radius:3px" style-hover="filter:brightness(1.12)">REQUEST A QUOTE</a>
+    <a href="tel:+12503008029" style="padding:17px 40px;border:1px solid rgba(201,162,75,.5);color:#F4F1E9;font-size:14px;letter-spacing:.12em;border-radius:3px" style-hover="border-color:#D9B45C;color:#E8C97A">250 300 8029</a>
+  </div>
+</section>
+
+<footer id="contact" data-screen-label="Footer" style="padding:80px 96px 40px;background:#080809;border-top:1px solid rgba(201,162,75,.18)">
+  <div class="rg-4" style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px">
+    <div>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+        <img src="uploads/velora-mark-v3.png" alt="VELORA" style="width:42px;height:42px;object-fit:contain">
+        <span style="display:flex;flex-direction:column;line-height:1"><span style="font-family:'Marcellus',serif;font-size:19px;letter-spacing:.32em">VELORA</span><span style="font-size:9px;letter-spacing:.3em;color:#A39F94;margin-top:5px">BUILDING SOLUTIONS</span></span>
+      </div>
+      <p style="font-size:14.5px;line-height:1.7;color:#A39F94;max-width:320px;margin:0;text-wrap:pretty">Premium painting, drywall and finishing in Kelowna, BC. Quality. Reliability. Perfection.</p>
+    </div>
+    <div>
+      <div style="font-size:11px;letter-spacing:.28em;color:#D9B45C;margin-bottom:18px">SERVICES</div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:14.5px"><a href="services.html#interior-painting" style="color:#A39F94" style-hover="color:#E8C97A">Interior Painting</a><a href="services.html#exterior-painting" style="color:#A39F94" style-hover="color:#E8C97A">Exterior Painting</a><a href="services.html#drywall-finishing" style="color:#A39F94" style-hover="color:#E8C97A">Drywall &amp; Finishing</a><a href="services.html#texture" style="color:#A39F94" style-hover="color:#E8C97A">Texture Work</a><a href="services.html#repairs" style="color:#A39F94" style-hover="color:#E8C97A">Repairs &amp; Maintenance</a></div>
+    </div>
+    <div>
+      <div style="font-size:11px;letter-spacing:.28em;color:#D9B45C;margin-bottom:18px">COMPANY</div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:14.5px"><a href="#about" style="color:#A39F94" style-hover="color:#E8C97A">Why VELORA</a><a href="projects.html" style="color:#A39F94" style-hover="color:#E8C97A">Projects</a><a href="quote.html" style="color:#A39F94" style-hover="color:#E8C97A">Request a Quote</a><a href="contact.html" style="color:#A39F94" style-hover="color:#E8C97A">Contact</a></div>
+    </div>
+    <div>
+      <div style="font-size:11px;letter-spacing:.28em;color:#D9B45C;margin-bottom:18px">CONTACT</div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:14.5px;color:#A39F94"><a href="tel:+12503008029" style="color:#A39F94" style-hover="color:#E8C97A">250 300 8029</a><a href="mailto:velorabuilding@gmail.com" style="color:#A39F94" style-hover="color:#E8C97A">velorabuilding@gmail.com</a><span>Kelowna, British Columbia</span><span>Mon–Sat · 8am–6pm</span></div>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:space-between;border-top:1px solid rgba(201,162,75,.12);padding-top:24px;font-size:12.5px;color:#6E6A61">
+    <span>© 2026 VELORA Building Solutions · Kelowna, BC</span>
+    <span>Fully insured · Workmanship guaranteed</span>
+  </div>
+</footer>
+
+<sc-if value="{{ floatingCta }}" hint-placeholder-val="{{ true }}">
+  <a href="#quote" style="position:fixed;bottom:28px;right:28px;z-index:60;display:flex;align-items:center;gap:10px;padding:15px 26px;background:linear-gradient(135deg,#B48630,#D9B45C 50%,#B48630);color:#0B0B0C;font-weight:600;font-size:13px;letter-spacing:.1em;border-radius:100px;box-shadow:0 8px 30px rgba(0,0,0,.5)" style-hover="filter:brightness(1.12)">✦ FREE QUOTE</a>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;floatingCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;phoneInNav&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
+class Component extends DCLogic {
+  state = { baPos: 50, openFaq: 0, baMode: "compare", baBeforeFilled: true, menuOpen: false };
+  componentDidMount() {
+    fetch("./.image-slots.state.json").then(r => r.ok ? r.json() : null).then(j => {
+      if (j && j["ba-before"]) this.setState({ baBeforeFilled: true });
+    }).catch(() => {});
+  }
+  renderVals() {
+    const baPos = this.state.baPos;
+    const faqsData = [
+      { q: "How much does interior painting cost in Kelowna?", a: "Every job is different, but most rooms fall in a predictable range once we know the size, ceiling height and condition of the walls. Send a few photos with the quote form and we'll give you an honest number — no lowball-then-upsell." },
+      { q: "Are you insured?", a: "Yes — VELORA carries full liability insurance, and we're happy to provide proof of coverage before work begins." },
+      { q: "How long does a typical project take?", a: "A standard interior repaint runs 2–4 days; drywall and texture work depends on drying time between coats. You'll get a clear schedule before we start, and we keep to it." },
+      { q: "Do you handle both drywall and paint?", a: "That's our specialty — one crew from bare studs or damaged walls to a flawless final coat. No coordinating between trades, no finger-pointing." },
+      { q: "Do you work outside Kelowna?", a: "Regularly. West Kelowna, Lake Country, Peachland, Vernon, Summerland and Penticton are all in our service area — and we'll travel further for the right project." },
+    ];
+    return {
+      floatingCta: this.props.floatingCta ?? true,
+      phoneInNav: this.props.phoneInNav ?? true,
+      menuOpen: this.state.menuOpen,
+      menuOpenStr: String(this.state.menuOpen),
+      burgerIcon: this.state.menuOpen ? "\u2715" : "\u2630",
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      baPos,
+      baFillMode: this.state.baMode === "fill",
+      baCompareMode: this.state.baMode === "compare",
+      baModeLabel: this.state.baMode === "fill" ? "PREVIEW COMPARE SLIDER" : "BACK TO SIDE-BY-SIDE",
+      toggleBaMode: () => this.setState(s => ({ baMode: s.baMode === "fill" ? "compare" : "fill" })),
+      baBeforeFilled: this.state.baBeforeFilled,
+      baBeforeEmpty: !this.state.baBeforeFilled,
+      baWrapW: baPos + "%",
+      baInnerW: baPos > 0 ? (10000 / baPos) + "%" : "100%",
+      onBa: (e) => this.setState({ baPos: +e.target.value }),
+      services: [
+        { num: "01", title: "Interior Painting", desc: "Crisp lines, flawless walls and a dust-free finish for living spaces, kitchens, offices and rentals.", tags: "Walls · Ceilings · Trim · Doors" },
+        { num: "02", title: "Exterior Painting", desc: "Weather-ready coatings that protect your investment and lift your curb appeal for years.", tags: "Siding · Stucco · Fences · Decks" },
+        { num: "03", title: "Drywall Installation", desc: "New builds, basements and additions — hung straight, fastened right, ready for a perfect finish.", tags: "New builds · Basements · Additions" },
+        { num: "04", title: "Drywall Repair & Finishing", desc: "Taping, mudding and sanding to a Level 5 finish. Holes, cracks and water damage — gone without a trace.", tags: "Taping · Mudding · Level 5" },
+        { num: "05", title: "Texture Removal & Application", desc: "Say goodbye to dated popcorn ceilings, or add a modern knockdown texture. Clean, contained, done right.", tags: "Popcorn removal · Knockdown" },
+        { num: "06", title: "Repairs & Maintenance", desc: "Small fixes and property upkeep, handled with the same care as a full renovation.", tags: "Homes · Rentals · Commercial" },
+      ],
+      pillars: [
+        { title: "Owner on every job", desc: "You deal with the person doing the work — not a call centre or rotating crew." },
+        { title: "Detailed, honest quotes", desc: "Line-by-line pricing with no surprises. What we quote is what you pay." },
+        { title: "Clean job sites", desc: "Floors covered, furniture protected, site tidied every single day." },
+        { title: "We answer the phone", desc: "Fast replies before, during and after the project. Communication is part of the craft." },
+      ],
+      steps: [
+        { num: "STEP 01", title: "Reach out", desc: "Call, email or use the quote form. Photos help — a walkthrough is even better." },
+        { num: "STEP 02", title: "Get your quote", desc: "A clear, itemized quote within one business day of seeing the space." },
+        { num: "STEP 03", title: "We do the work", desc: "On schedule, protected surfaces, daily updates. You always know where things stand." },
+        { num: "STEP 04", title: "Final walkthrough", desc: "We walk the job together. It's not done until you say it's perfect." },
+      ],
+      projects: [
+        { slotId: "proj-1", src: "uploads/ai-exterior-dusk.png", placeholder: "Drop project photo", kind: "EXTERIOR · KELOWNA", title: "Craftsman exterior repaint", desc: "Slate-blue body with natural cedar-shake gables and cream trim — coatings chosen for full-sun Okanagan exposure." },
+        { slotId: "proj-2", src: "uploads/ai-bedroom.png", placeholder: "Drop project photo", kind: "INTERIOR · WEST KELOWNA", title: "Primary suite repaint", desc: "Bedroom and ensuite — walls, tray ceiling and trim in a warm neutral scheme, finished dust-free." },
+        { slotId: "proj-3", src: "uploads/ai-kitchen.png", placeholder: "Drop project photo", kind: "INTERIOR · KELOWNA", title: "Kitchen & main floor refresh", desc: "Cabinet-adjacent walls, ceilings and millwork repainted in three days — kitchen back in service each evening." },
+      ],
+      reviews: [
+        { quote: "Meticulous from the first walkthrough to the final coat. Our place looks brand new, and he left it cleaner than he found it.", name: "S. Reimer", where: "Interior repaint · Kelowna" },
+        { quote: "Fixed water-damaged drywall you'd never know was there. Showed up when he said he would, every single day.", name: "D. Kowalski", where: "Drywall repair · West Kelowna" },
+        { quote: "We've used a lot of trades for our rentals — VELORA is the first one I don't have to chase. Quote was accurate to the dollar.", name: "M. Pandher", where: "Property maintenance · Lake Country" },
+      ],
+      areas: ["Kelowna", "West Kelowna", "Lake Country", "Peachland", "Vernon", "Summerland", "Penticton", "Central Okanagan"],
+      faqs: faqsData.map((f, i) => ({
+        ...f,
+        open: this.state.openFaq === i,
+        mark: this.state.openFaq === i ? "−" : "+",
+        toggle: () => this.setState(s => ({ openFaq: s.openFaq === i ? -1 : i })),
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>
