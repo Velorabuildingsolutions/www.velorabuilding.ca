@@ -10,12 +10,14 @@
       var open = menu.classList.toggle("open");
       burger.setAttribute("aria-expanded", open ? "true" : "false");
       burger.textContent = open ? "\u2715" : "\u2630";
+      document.body.classList.toggle("menu-open", open);
     });
     menu.querySelectorAll("a").forEach(function (a) {
       a.addEventListener("click", function () {
         menu.classList.remove("open");
         burger.setAttribute("aria-expanded", "false");
         burger.textContent = "\u2630";
+        document.body.classList.remove("menu-open");
       });
     });
   }
